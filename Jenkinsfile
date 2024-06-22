@@ -22,5 +22,6 @@ node {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
         archiveArtifacts artifacts: '**/target/surefire-reports/**/*.png'
+        junit '**/target/surefire-reports/TEST-*/**/*.png'
     }
 }
