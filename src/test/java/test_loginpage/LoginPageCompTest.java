@@ -33,19 +33,19 @@ public class LoginPageCompTest extends LoginPageComp {
         CheckTheLoginPageOpen();
     }
 
-//    @Test(priority = 2,dataProvider = "testData")
-//    public void CheckUserLoginSuccessfullyUsingDDTAndDataProvider(String userName, String password){
-////        1- Check Login Page Opened
-//        CheckTheLoginPageOpen();
-////        2- Check The Email And Password Fields Are The Main Page
-//        CheckTheUsernameAndPasswordFieldsAreOnTheMainScreen();
-////        3- Check User Enter Data Success With DDT And Data Provider
-//        CheckUserEnterDataSuccessfullyWithDDTAndDataProviders(userName,password);
-////        4- Check User Login Success And Home Page Opened
-//        HomePageComp homePageComp = new HomePageComp();
-//        homePageComp.CheckHomePageOpen();
-//        homePageComp.CheckHeaderAppearAndTextVisible();
-//    }
+    @Test(priority = 2,dataProvider = "testData")
+    public void CheckUserLoginSuccessfullyUsingDDTAndDataProvider(String userName, String password){
+//        1- Check Login Page Opened
+        CheckTheLoginPageOpen();
+//        2- Check The Email And Password Fields Are The Main Page
+        CheckTheUsernameAndPasswordFieldsAreOnTheMainScreen();
+//        3- Check User Enter Data Success With DDT And Data Provider
+        CheckUserEnterDataSuccessfullyWithDDTAndDataProviders(userName,password);
+//        4- Check User Login Success And Home Page Opened
+        HomePageComp homePageComp = new HomePageComp();
+        homePageComp.CheckHomePageOpen();
+        homePageComp.CheckHeaderAppearAndTextVisible();
+    }
 //
 //    @Test(priority = 3)
 //    public void CheckUserLoginSuccessfullyUsingPropertiesFile(){
@@ -62,19 +62,19 @@ public class LoginPageCompTest extends LoginPageComp {
 //
 //    }
 //
-    @Test(priority = 4, dataProvider = "userDataExcel")
-    public void CheckUserLoginSuccessfullyUsingExcelFile(String userName, String password) throws IOException {
-//        1- Check Login Page Opened
-        CheckTheLoginPageOpen();
-//        2- Check The Email And Password Fields Are The Main Page
-        CheckTheUsernameAndPasswordFieldsAreOnTheMainScreen();
-//        3- Check User Enter Data Success With DDT And Data Provider
-        CheckUserEnterDataSuccessfullyWithDDTAndExcelFile(userName,password);
-//        4- Check User Login Success And Home Page Opened
-        HomePageComp homePageComp = new HomePageComp();
-        homePageComp.CheckHomePageOpen();
-        homePageComp.CheckHeaderAppearAndTextVisible();
-    }
+//    @Test(priority = 4, dataProvider = "userDataExcel")
+//    public void CheckUserLoginSuccessfullyUsingExcelFile(String userName, String password) throws IOException {
+////        1- Check Login Page Opened
+//        CheckTheLoginPageOpen();
+////        2- Check The Email And Password Fields Are The Main Page
+//        CheckTheUsernameAndPasswordFieldsAreOnTheMainScreen();
+////        3- Check User Enter Data Success With DDT And Data Provider
+//        CheckUserEnterDataSuccessfullyWithDDTAndExcelFile(userName,password);
+////        4- Check User Login Success And Home Page Opened
+//        HomePageComp homePageComp = new HomePageComp();
+//        homePageComp.CheckHomePageOpen();
+//        homePageComp.CheckHeaderAppearAndTextVisible();
+//    }
 //
 //    @Test(priority = 5)
 //    public void CheckErrorMessageWhenUserEnterInvalidDataWithDDTAndPropertiesFile(){
