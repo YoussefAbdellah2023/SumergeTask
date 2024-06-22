@@ -27,7 +27,7 @@ pipeline {
             steps {
                script {
 						bat """						
-							cd "${E2E_TESTS_PATH}"
+							cd /d "${E2E_TESTS_PATH}"
 							mvn test
 						"""
                 }
