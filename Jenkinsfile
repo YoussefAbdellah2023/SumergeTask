@@ -21,6 +21,6 @@ node {
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
        archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-       archiveArtifacts artifacts: '**/target/ScreenShottest/**/*.png'
+       archiveArtifacts artifacts: '**/target/surefire-reports/**/*.png'
     }
 }
