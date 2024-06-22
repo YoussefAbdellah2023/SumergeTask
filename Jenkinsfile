@@ -1,45 +1,25 @@
-pipeline {
-    agent any
-
-    environment {
-        // Define the local paths for your frontend and backend projects
-
-        E2E_TESTS_PATH ='C:/Users/Youssef Abdellah/Desktop/Sumerge_Task'
+node {
+    def mvnHome
+    stage('Preparation') { // for display purposes
+        // Get some code from a GitHub repository
+        git 'https://github.com/YoussefAbdellah2023/SumergeTask.git'
+        // Get the Maven tool.
+        // ** NOTE: This 'M3' Maven tool must be configured
+        // **       in the global configuration.
+        mvnHome = tool 'MAVEN_HOME'
     }
-
-    stages {
-        stage('Prepare') {
-            steps {
-                // Clean workspace
-                cleanWs()
-                // Copy or sync the local repository to the Jenkins workspace
-                // You might need to adjust these commands based on your OS and file structure
-                
-                
-                
-            }
-        }
-        
-
-
-
-        stage('Run E2E Tests') {
-            steps {
-               script {
-						bat """						
-							cd /d "${E2E_TESTS_PATH}"
-							mvn test
-						"""
-                }
+    stage('Build') {
+        // Run the maven build
+        withEnv(["MVN_HOME=$mvnHome"]) {
+            if (isUnix()) {
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+            } else {
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
         }
     }
-    post {
-        always {
-            // Collect artifacts or perform cleanup
-            // For example, archive the test results
-            archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-            junit '**/target/surefire-reports/TEST-*.xml'
-        }
+    stage('Results') {
+        junit '**/target/surefire-reports/TEST-*.xml'
+        archiveArtifacts 'target/*.jar'
     }
 }
