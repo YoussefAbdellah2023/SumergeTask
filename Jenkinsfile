@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define the local paths for your frontend and backend projects
 
-        E2E_TESTS_PATH = 'C:\Users\Youssef Abdellah\Desktop\Sumerge_Task'
+        E2E_TESTS_PATH = 'C:/Users/Youssef Abdellah/Desktop/Sumerge_Task'
     }
 
     stages {
