@@ -15,13 +15,6 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Build the project using Maven
-                bat 'mvn clean install'
-            }
-        }
-
         stage('Test') {
             steps {
                 // Run the tests using Maven
@@ -38,13 +31,6 @@ pipeline {
             }
         }
 
-
-        stage('Deploy') {
-            steps {
-                // Deploy the application
-                bat 'scp target/your-artifact.jar user@your-server:/path/to/deploy'
-            }
-        }
     }
 
 
