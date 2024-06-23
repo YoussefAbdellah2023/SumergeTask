@@ -20,6 +20,8 @@ node {
             }
         }
     }
+
+ stage('Result') {
     post {
            always {
                // Collect artifacts or perform cleanup
@@ -29,6 +31,7 @@ node {
                archiveArtifacts artifacts: '**/target/surefire-reports/**/*.png'
            }
 
+       }
        }
 
 }
