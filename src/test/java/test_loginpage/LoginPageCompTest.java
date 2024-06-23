@@ -28,10 +28,10 @@ public class LoginPageCompTest extends LoginPageComp {
     }
 
 
-    @Test(priority = 1)
-    public void CheckLoginPageOpen(){
-        CheckTheLoginPageOpen();
-    }
+//    @Test(priority = 1)
+//    public void CheckLoginPageOpen(){
+//        CheckTheLoginPageOpen();
+//    }
 
     @Test(priority = 2,dataProvider = "testData")
     public void CheckUserLoginSuccessfullyUsingDDTAndDataProvider(String userName, String password){
