@@ -28,6 +28,7 @@ node {
                junit '**/target/surefire-reports/TEST-*.xml'
                archiveArtifacts artifacts: 'target/surefire-reports/**/*.png'
            }
+
        }
 
 }
