@@ -15,17 +15,13 @@ pipeline {
             }
         }
 
+
         stage('Test') {
             steps {
-
-            script{
                 // Run the tests using Maven
-                bat 'mvn test'
+                 withEnv(["MVN_HOME=$mvnHome"])
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
             }
-
-            }
-        }
-   }
             post {
                 always {
                     // Archive the test results
@@ -33,11 +29,13 @@ pipeline {
 
                     // Archive the screenshots
                     archiveArtifacts artifacts: "${env.SCREENSHOT_DIR}/*.png", allowEmptyArchive: true
+                     archiveArtifacts artifacts: '**/target/surefire-reports/**/*.png'
                 }
             }
+        }
 
 
-
+    }
 
 
 }
