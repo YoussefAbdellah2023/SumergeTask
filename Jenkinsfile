@@ -29,6 +29,7 @@ node {
                archiveArtifacts artifacts: 'target/surefire-reports/**/*.png'
            }
        }
+
 }
 
 
