@@ -7,13 +7,6 @@ pipeline {
         SCREENSHOT_DIR = 'screenshots'
     }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                // Checkout the code from the repository
-                git url: 'https://github.com/your-repository.git'
-            }
-        }
 
 
         stage('Test') {
