@@ -1,34 +1,28 @@
 
-pipeline {
-    agent any
-
     environment {
         SCREENSHOT_DIR = 'screenshots'
     }
 
-    stages {
-    def mvnHome
-        stage('Checkout') {
-            steps {
-                // Checkout the code from the repository
-                git url: 'https://github.com/YoussefAbdellah2023/SumergeTask.git'
+  node {
+      def mvnHome
+      stage('Preparation') { // for display purposes
+          // Get some code from a GitHub repository
+          git 'https://github.com/YoussefAbdellah2023/SumergeTask.git'
+          // Get the Maven tool.
+          // ** NOTE: This 'M3' Maven tool must be configured
+          // **       in the global configuration.
+          mvnHome = tool 'MAVEN_HOME'
+      }
+      stage('Build') {
+          // Run the maven build
+          withEnv(["MVN_HOME=$mvnHome"]) {
+              if (isUnix()) {
+                  sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
+              } else {
+                  bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+              }
+          }
 
-                mvnHome = tool 'MAVEN_HOME'
-            }
-        }
-
-
-        stage('Test') {
-            steps {
-                // Run the tests using Maven
-                withEnv(["MVN_HOME=$mvnHome"]) {
-                            if (isUnix()) {
-                                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package'
-                            } else {
-                                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package/)
-                            }
-                        }
-            }
             post {
                 always {
                     // Archive the test results
@@ -40,7 +34,7 @@ pipeline {
                 }
             }
         }
-
+      }
 
     }
 
