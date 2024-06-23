@@ -1,5 +1,4 @@
 
-
 pipeline {
     agent any
 
@@ -12,6 +11,8 @@ pipeline {
             steps {
                 // Checkout the code from the repository
                 git url: 'https://github.com/YoussefAbdellah2023/SumergeTask.git'
+
+                mvnHome = tool 'MAVEN_HOME'
             }
         }
 
