@@ -22,10 +22,11 @@ node {
     }
     stage('Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
+        junit '**/target/surefire-reports/TEST-*.png'
         junit '**/target/surefire-reports/*.xml'
         archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-        archiveArtifacts artifacts: '**/target/surefire-reports/screenshot-*/**/*.png'
-        archiveArtifacts artifacts: "${env.SCREENSHOT_DIR}/*.png", allowEmptyArchive: true
+        archiveArtifacts artifacts: '**/target/surefire-reports/TEST-*/**/*.png', allowEmptyArchive: true
+
     }
 }
 
