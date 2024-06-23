@@ -19,7 +19,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Run the tests using Maven
-                sh 'mvn test'
+                bat 'mvn test'
             }
             post {
                 always {
@@ -43,12 +43,12 @@ pipeline {
 
         success {
             // Notify success
-            echo 'Build, test, and deployment successful!'
+            bat 'Build, test, and deployment successful!'
         }
 
         failure {
             // Notify failure
-            echo 'Build, test, or deployment failed.'
+            bat 'Build, test, or deployment failed.'
         }
     }
 }
