@@ -30,9 +30,6 @@ public class SettingUpWebDriver extends ConfigLoader{
 
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-
-//        driver = new FirefoxDriver();
-//        driver.manage().window().maximize();
         driver.navigate().to(getUrl());
 
         return driver;
@@ -64,12 +61,6 @@ public class SettingUpWebDriver extends ConfigLoader{
 
     }
 
-//    public void closeDriver2(ITestResult result) throws IOException {
-//            // Capture and save the screenshot
-//            String testClassName = result.getTestClass().getName();
-//            String testMethodName = result.getMethod().getMethodName();
-//            ScreenShot.takeScreenShots(result);
-//        }
 
     }
 
