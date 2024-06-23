@@ -22,16 +22,15 @@ node {
     }
 
  stage('Result') {
-    post {
-           always {
+
                // Collect artifacts or perform cleanup
                // For example, archive the test results
                archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
                junit '**/target/surefire-reports/TEST-*.xml'
                archiveArtifacts artifacts: '**/target/surefire-reports/**/*.png'
-           }
 
-       }
+
+
        }
 
 }
