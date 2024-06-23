@@ -20,13 +20,15 @@ node {
             }
         }
     }
-    stage('Results') {
-        junit '**/target/surefire-reports/TEST-*.xml'
-        junit '**/target/surefire-reports/*.xml'
-        archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
-        archiveArtifacts artifacts: '**/target/surefire-reports-*/**/*.png', allowEmptyArchive: true
-
-    }
+    post {
+           always {
+               // Collect artifacts or perform cleanup
+               // For example, archive the test results
+               archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+               junit '**/target/surefire-reports/TEST-*.xml'
+               archiveArtifacts artifacts: 'target/surefire-reports/*.png'
+           }
+       }
 }
 
 
