@@ -15,7 +15,7 @@ public class ScreenShot extends SettingUpWebDriver{
 
         File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         // Define the directory path based on the class and method name
-        String directoryPath = "target/surefire-reports" + testClassName ;
+        String directoryPath = "test-output/screenshot" + testClassName ;
         logger.info("directoryPath = " + directoryPath);
         File targetDirectory = new File(directoryPath);
         if (!targetDirectory.exists()) {
