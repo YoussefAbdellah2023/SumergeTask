@@ -15,6 +15,12 @@ pipeline {
             }
         }
 
+        stage('Build') {
+            steps {
+                // Build the project using Maven
+                bat 'mvn clean install'
+            }
+        }
 
         stage('Test') {
             steps {
@@ -32,24 +38,14 @@ pipeline {
             }
         }
 
-
-    }
-
-    post {
-        always {
-            // Clean up after the build
-            cleanWs()
-        }
-
-        success {
-            // Notify success
-            bat 'Build, test, and deployment successful!'
-        }
-
-        failure {
-            // Notify failure
-            bat 'Build, test, or deployment failed.'
+        stage('Deploy') {
+            steps {
+                // Deploy the application
+                bat 'scp target/your-artifact.jar user@your-server:/path/to/deploy'
+            }
         }
     }
+
+
 }
 
