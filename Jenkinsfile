@@ -17,9 +17,15 @@ pipeline {
 
         stage('Test') {
             steps {
+
+            script{
                 // Run the tests using Maven
                 bat 'mvn test'
             }
+
+            }
+        }
+   }
             post {
                 always {
                     // Archive the test results
@@ -29,9 +35,9 @@ pipeline {
                     archiveArtifacts artifacts: "${env.SCREENSHOT_DIR}/*.png", allowEmptyArchive: true
                 }
             }
-        }
 
-    }
+
+
 
 
 }
