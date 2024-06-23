@@ -27,7 +27,7 @@ node {
                // For example, archive the test results
                archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
                junit '**/target/surefire-reports/TEST-*.xml'
-               archiveArtifacts artifacts: 'test-output/screenshot/**/*.png'
+               archiveArtifacts artifacts: 'target/screenshot/test**/*.png'
 
 
 
